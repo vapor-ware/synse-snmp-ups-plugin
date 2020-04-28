@@ -1,0 +1,31 @@
+version: '3'
+services:
+  synse-server:
+    container_name: synse-server
+    image: vaporio/synse-server
+    ports:
+      - '5000:5000'
+    links:
+      - ups-plugin
+    environment:
+      SYNSE_LOGGING: debug
+      SYNSE_PLUGIN_TCP: ups-plugin:5001
+
+  ups-plugin:
+    container_name: ups-plugin
+    image: vaporio/snmp-ups-plugin
+    # TODO: figure out the config below
+    expose:
+      - '5001'
+    ports:
+      - '6060:6060'
+    links:
+      - snmp-emulator
+
+  snmp-emulator:
+    container_name: snmp-emulator
+    build:
+      context: ../emulator
+      dockerfile: Dockerfile
+    expose:
+      - '1024/udp'
