@@ -11,11 +11,11 @@ var (
 
 	// VoltAmpere describes readings with values for apparent power.
 	VoltAmpere = output.Output{
-		Name: "volt-ampere",
-		Type: "power",
+		Name:      "volt-ampere",
+		Type:      "power",
 		Precision: 4,
 		Unit: &output.Unit{
-			Name: "volt-ampere",
+			Name:   "volt-ampere",
 			Symbol: "VA",
 		},
 	}
