@@ -29,6 +29,7 @@ func MakePlugin() *sdk.Plugin {
 	// Register custom output types.
 	err = p.RegisterOutputs(
 		&outputs.Identity,
+		&outputs.VoltAmpere,
 	)
 	if err != nil {
 		log.Fatal(err)

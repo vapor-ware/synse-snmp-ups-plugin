@@ -1,35 +1,45 @@
 package devices
 
-import "github.com/vapor-ware/synse-snmp-base/pkg/mibs"
+import (
+	"github.com/vapor-ware/synse-sdk/sdk"
+	"github.com/vapor-ware/synse-snmp-base/pkg/mibs"
+)
 
 // Plugin device definitions for UPS-MIB "upsBattery" objects.
 //
 // See UPS-MIB 1.3.6.1.2.1.33.1.2
 // http://www.oidview.com/mibs/0/UPS-MIB.html
+// https://tools.ietf.org/html/rfc1628
 var (
-	// TODO (etd): this should be an enumeration of:
-	//   unknown, batteryNormal, batteryLow, batteryDepleted
 	UpsBatteryStatus = mibs.SnmpDevice{
 		OID:     "1.3.6.1.2.1.33.1.2.1.0",
 		Info:    "upsBatteryStatus",
 		Type:    "status",
 		Output:  "status",
 		Handler: "read-only",
+		Data: map[string]interface{}{
+			"enum": map[interface{}]interface{}{
+				1: "unknown",
+				2: "batteryNormal",
+				3: "batteryLow",
+				4: "batteryDepleted",
+			},
+		},
 	}
 
 	UpsSecondsOnBattery = mibs.SnmpDevice{
 		OID:     "1.3.6.1.2.1.33.1.2.2.0",
 		Info:    "upsSecondsOnBattery",
-		Type:    "status", // FIXME (etd): units are in seconds
-		Output:  "status",
+		Type:    "duration",
+		Output:  "seconds",
 		Handler: "read-only",
 	}
 
 	UpsEstimatedMinutesRemaining = mibs.SnmpDevice{
 		OID:     "1.3.6.1.2.1.33.1.2.3.0",
 		Info:    "upsEstimatedMinutesRemaining",
-		Type:    "status", // FIXME (etd): units are in minutes
-		Output:  "status",
+		Type:    "duration",
+		Output:  "minutes",
 		Handler: "read-only",
 	}
 
@@ -44,17 +54,31 @@ var (
 	UpsBatteryVoltage = mibs.SnmpDevice{
 		OID:     "1.3.6.1.2.1.33.1.2.5.0",
 		Info:    "upsBatteryVoltage",
-		Type:    "voltage", // FIXME (etd): units are "0.1 Volt DC"
+		Type:    "voltage",
 		Output:  "voltage",
 		Handler: "read-only",
+		Transforms: []sdk.Transformer{
+			// Units are "0.1 Volt DC", so to encode the value as Volts,
+			// multiply by 10 (0.1 * 10 = 1).
+			&sdk.ScaleTransformer{
+				Factor: 10,
+			},
+		},
 	}
 
 	UpsBatteryCurrent = mibs.SnmpDevice{
 		OID:     "1.3.6.1.2.1.33.1.2.6.0",
 		Info:    "upsBatteryCurrent",
-		Type:    "current", // FIXME (etd): units are "0.1 Amp DC"
+		Type:    "current",
 		Output:  "electric-current",
 		Handler: "read-only",
+		Transforms: []sdk.Transformer{
+			// Units are "0.1 Amp DC", so to encode the value as Amps,
+			// multiply by 10 (0.1 * 10 = 1).
+			&sdk.ScaleTransformer{
+				Factor: 10,
+			},
+		},
 	}
 
 	UpsBatteryTemperature = mibs.SnmpDevice{
