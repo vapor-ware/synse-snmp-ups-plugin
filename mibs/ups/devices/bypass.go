@@ -61,7 +61,7 @@ var (
 		OID:     "1.3.6.1.2.1.33.1.5.3.1.4",
 		Info:    "upsBypassPower",
 		Type:    "power",
-		Output:  "watts",
+		Output:  "watt",
 		Handler: "read-only",
 	}
 )

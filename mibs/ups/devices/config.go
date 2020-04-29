@@ -69,7 +69,7 @@ var (
 		OID:     "1.3.6.1.2.1.33.1.9.6",
 		Info:    "upsConfigOutputPower",
 		Type:    "power",
-		Output:  "watts",
+		Output:  "watt",
 		Handler: "read-only",
 	}
 

@@ -80,7 +80,7 @@ var (
 		OID:     "1.3.6.1.2.1.33.1.4.4.1.4",
 		Info:    "upsOutputPower",
 		Type:    "power",
-		Output:  "watts",
+		Output:  "watt",
 		Handler: "read-only",
 	}
 
