@@ -14,18 +14,25 @@ services:
   ups-plugin:
     container_name: ups-plugin
     image: vaporio/snmp-ups-plugin
-    # TODO: figure out the config below
     expose:
       - '5001'
     ports:
       - '6060:6060'
+    volumes:
+      - './config.yml:/etc/synse/plugin/config/config.yml'
     links:
       - snmp-emulator
 
   snmp-emulator:
     container_name: snmp-emulator
-    build:
-      context: ../emulator
-      dockerfile: Dockerfile
+    image: vaporio/snmp-emulator
     expose:
       - '1024/udp'
+    command:
+      - '--data-dir=mibs/ups'
+      - '--agent-udpv4-endpoint=0.0.0.0:1024'
+      - '--v3-user=simulator'
+      - '--v3-auth-key=auctoritas'
+      - '--v3-auth-proto=SHA'
+      - '--v3-priv-key=privatus'
+      - '--v3-priv-proto=AES'

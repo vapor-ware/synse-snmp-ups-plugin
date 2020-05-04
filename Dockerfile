@@ -15,10 +15,7 @@ LABEL org.label-schema.schema-version="1.0" \
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
-COPY config.yml .
-
 # Copy the executable.
 COPY synse-snmp-ups-plugin ./plugin
 
-EXPOSE 5001
 ENTRYPOINT ["./plugin"]
