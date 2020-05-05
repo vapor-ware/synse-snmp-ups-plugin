@@ -124,8 +124,8 @@ github.com/vapor-ware/synse-sdk v0.1.0-alpha.0.20200429183220-f7356cf8098b h1:U7
 github.com/vapor-ware/synse-sdk v0.1.0-alpha.0.20200429183220-f7356cf8098b/go.mod h1:9EpeUEaqm+TKxjpmrywtcU7j/V8m8VSLYvwhTuXfv2Q=
 github.com/vapor-ware/synse-server-grpc v0.0.2-0.20200327135045-e8fab4d340ea h1:3IenfSpSRcMEmdMMixiKZ2S16X0YvPFNEUvESvHwyAc=
 github.com/vapor-ware/synse-server-grpc v0.0.2-0.20200327135045-e8fab4d340ea/go.mod h1:66oRQ1KV/ZevAiiXbSUjRbx/h91xG/ArE/V39Jh872I=
-github.com/vapor-ware/synse-snmp-base v0.0.0-20200428133002-3ffbce8539c7 h1:EUP6sP73eg1xpzu9Jdlfl0lSlX2k2E3XRMrftKoKM/g=
-github.com/vapor-ware/synse-snmp-base v0.0.0-20200428133002-3ffbce8539c7/go.mod h1:aN2ynTZfEhzMp8Te3gEw+VhOk2RhxHJP0Eu78lfMIHQ=
+github.com/vapor-ware/synse-snmp-base v0.0.0-20200505131659-2d31ce96a4e1 h1:6KHfugdIhCb5V6C1XGI2L9JM+bWgTo6Hb6GLH7nEzns=
+github.com/vapor-ware/synse-snmp-base v0.0.0-20200505131659-2d31ce96a4e1/go.mod h1:aN2ynTZfEhzMp8Te3gEw+VhOk2RhxHJP0Eu78lfMIHQ=
 golang.org/x/crypto v0.0.0-20180904163835-0709b304e793/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/exp v0.0.0-20190121172915-509febef88a4/go.mod h1:CJ0aWSM057203Lf6IL+f9T1iT9GByDxfZKAQTCR3kQA=
