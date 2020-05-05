@@ -13,7 +13,7 @@ import (
 //
 // It ensures all plugin-specific configuration is done and all necessary items
 // are registered with the plugin.
-func MakePlugin() *sdk.Plugin {
+func MakePlugin() (*sdk.Plugin, error) {
 
 	// Build a base SNMP plugin instance.
 	p, err := plugin.NewSnmpBasePlugin(&plugin.PluginMetadata{
@@ -23,7 +23,7 @@ func MakePlugin() *sdk.Plugin {
 		VCS:         "https://github.com/vapor-ware/synse-snmp-ups-plugin",
 	})
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
 	// Register custom output types.
@@ -32,7 +32,7 @@ func MakePlugin() *sdk.Plugin {
 		&outputs.VoltAmpere,
 	)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
 	// Register the UPS MIB.
@@ -40,14 +40,17 @@ func MakePlugin() *sdk.Plugin {
 		ups.Mib,
 	)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
-	return p
+	return p, nil
 }
 
 func main() {
-	p := MakePlugin()
+	p, err := MakePlugin()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	if err := p.Run(); err != nil {
 		log.Fatal(err)
