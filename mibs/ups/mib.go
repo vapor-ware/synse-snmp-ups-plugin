@@ -12,6 +12,7 @@ import (
 //  - https://tools.ietf.org/html/rfc1628
 var Mib = mibs.NewMIB(
 	"UPS-MIB",
+	"1.3.6.1.2.1.33",
 
 	// Alarm Devices
 	&devices.UpsAlarmsPresent,
