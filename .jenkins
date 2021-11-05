@@ -11,4 +11,7 @@ library identifier: 'vapor@1.19.7', retriever: modernSCM([
 golangPipeline([
   'image': 'vaporio/snmp-ups-plugin',
   'skipIntegrationTest': true,
+  'skipSetup': true,
+  'skipUnitTest': true,
+  'goVersion': '1.16',
 ])
