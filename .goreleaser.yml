@@ -33,13 +33,11 @@ dockers:
   -
     goos: linux
     goarch: amd64
-    binaries:
-      - synse-snmp-ups-plugin
     image_templates:
-      - vaporio/snmp-ups-plugin:{{ .Tag }}
-      - vaporio/snmp-ups-plugin:{{ .Major }}
-      - vaporio/snmp-ups-plugin:{{ .Major }}.{{ .Minor }}
-      - vaporio/snmp-ups-plugin:latest
+      - docker.io/vaporio/snmp-ups-plugin:{{ .Tag }}
+      - docker.io/vaporio/snmp-ups-plugin:{{ .Major }}
+      - docker.io/vaporio/snmp-ups-plugin:{{ .Major }}.{{ .Minor }}
+      - docker.io/vaporio/snmp-ups-plugin:latest
     build_flag_templates:
       - "--label=org.label-schema.version={{ .Version }}"
       - "--label=org.label-schema.build-date={{ .Date }}"
